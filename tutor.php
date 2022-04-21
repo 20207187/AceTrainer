@@ -12,11 +12,7 @@
 
 		<h2>AceTrainer</h2>
 
-		<p>you have been logged out</p> 
-
-		<?php 
-		session_destroy();
-		?>
+		<p>Welcome to the tutor area</p>
 
 
 
