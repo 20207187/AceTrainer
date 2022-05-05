@@ -20,17 +20,18 @@
 
 		<p>tutor</p> 
 		<?php 
-		if (!$_SESSION["login"]) showcourseform();
-		echo courseform($connect);
+		if (isset($_POST["name"])) courseform($connect);
+		else showcourseform($connect);
 		?>
+		<?php
+
+		tutorauthstudent($connect);
+			
 		
+		?>
 
 
-		
-		
 
-		
-		<?php include("includes/footer.php"); ?>
 	</body>
 
 </html>
