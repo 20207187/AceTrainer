@@ -225,6 +225,15 @@ function tutorauthstudent($connect){
 }
 
 function studentcoursetable($connect){
+	if(isset($_POST["studentcourseID"])){
+		$studentcourseID = $_POST["studentcourseID"];
+		$studentenrol = $_SESSION["schoolID"];
+		$date = date('YYYY-MM-DD');
+		$database = "INSERT INTO studentcourse VALUES('$studentenrol','$studentcourseID','$date')";
+		if (mysqli_query($connect, $database)) {
+			echo "<p> you have enroled onto a course </p>";
+		}
+	}
 		$database = "SELECT * FROM courses";
 		if ($result = mysqli_query($connect, $database)){
 			echo "<table border= '1'>";
@@ -245,7 +254,7 @@ function studentcoursetable($connect){
 				echo "<td>$owner</td>";
 				echo "<td>";
 				echo"<form method = 'POST' action= 'student.php'>";
-				echo"<input type = 'hidden' name = 'studentcourseID' value= '$courseid'/>";
+				echo"<input type = 'hidden' name = 'studentcourseID' value= '$name'/>";
 				echo"<input type = 'submit' value = 'enrol'/>";
 				echo"</form>";
 				echo "</tr>";
