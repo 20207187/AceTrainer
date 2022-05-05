@@ -13,7 +13,7 @@
 		<h1>acetrainer</h1>
 		<?php
 			include("includes/header.php");
-			include("includes/taskbar.php");
+			include("includes/taskbar2.php");
 		?>
 
 		<h2>AceTrainer</h2>
@@ -23,6 +23,9 @@
 		if (isset($_POST["name"])) courseform($connect);
 		else showcourseform($connect);
 		?>
+
+		<h2> Student Authorisation </h2>
+		<p>Please authorise Students</p>
 		<?php
 
 		tutorauthstudent($connect);

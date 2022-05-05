@@ -15,7 +15,7 @@
 		<h1>acetrainer</h1>
 		<?php
 			include("includes/header.php");
-			include("includes/taskbar.php");
+			include("includes/taskbar3.php");
 		?>
 
 		<h2>AceTrainer</h2>
@@ -23,13 +23,18 @@
 		<p>student</p> 
 
 		
+		<h3> Courses that are available</h3>
 
+		<?php
+		studentcoursetable($connect);
+
+		?>
 
 		
 		
 
 		
-		<?php include("includes/footer.php"); ?>
+		
 	</body>
 
 </html>

@@ -196,7 +196,7 @@ function tutorauthstudent($connect){
 		echo "<tr>";
 		echo "<th> SchoolID</th>";
 		echo "<th> First Name</th>";
-		echo "<th> Last Name</th>";
+		echo "<th> Last Name</th>"; 
 		echo "<th> Authorisation</th>";
 		echo "</tr>";
 		
@@ -223,6 +223,41 @@ function tutorauthstudent($connect){
 
 	else echo "There is an error with the student list" . mysqli_error($connect);
 }
+
+function studentcoursetable($connect){
+		$database = "SELECT * FROM courses";
+		if ($result = mysqli_query($connect, $database)){
+			echo "<table border= '1'>";
+			echo "<tr>";
+			echo "<th>Course ID</th>";
+			echo "<th>Course Name</th>";
+			echo "<th>Course Value</th>";
+			echo "<th>tutor</th>";
+			echo "</tr>";
+
+			while ($row = mysqli_fetch_array($result)){
+				extract($row);
+
+				echo "<tr>";
+				echo "<td>$courseid</td>";
+				echo "<td>$name</td>";
+				echo "<td>$creditvalue</td>";
+				echo "<td>$owner</td>";
+				echo "<td>";
+				echo"<form method = 'POST' action= 'student.php'>";
+				echo"<input type = 'hidden' name = 'studentcourseID' value= '$courseid'/>";
+				echo"<input type = 'submit' value = 'enrol'/>";
+				echo"</form>";
+				echo "</tr>";
+				
+			}
+			"</table>";
+
+	}
+}	
+
+	
+
 
 
 
