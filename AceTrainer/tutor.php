@@ -29,9 +29,61 @@
 		<?php
 
 		tutorauthstudent($connect);
+		//files($connect);
 			
 		
 		?>
+
+	<?php
+	/*	if(isset($_POST["courseidresorce"])){
+			$courseid = $_POST["courseidresorce"];
+			$file = $_FILES["fileSelect"];
+
+			$fileName = $file["name"];
+			$tmpName = $file["tmp_name"];
+			$targetfile = "resources/$fileName";
+
+			if (move_uploaded_file($tmpName, $targetfile)){
+				echo "<p> file has been uploaded</p>";
+			}
+			else{
+				echo "<p> there was an error </p>";
+			}
+
+		}
+		?>
+		<form method="post" action = "tutor.php" enctype= "multipart/form-data">
+
+		<label for = "courseidresorce">course</label>
+		<select name = "courseidresorse">
+		<?php 
+			$database = "SELECT * FROM courses";
+			$result = mysqli_query($connect, $database);
+
+			while ($row = mysqli_fetch_array($result)){
+				extract($row);
+
+				echo "<option value= '$courseid'>$name</option>";
+			}
+		?>
+		</select>
+
+	 	<br/><br/>
+	 	<br/><br/>
+
+		<label for="fileSelect">Select file</label>
+		<input type="file" name="fileSelect"/>
+
+	 	<br/><br/>
+	 	<br/><br/>
+
+		<input type = "submit" value = "upload"/>
+
+		 </form>
+*/
+
+
+
 
 
 

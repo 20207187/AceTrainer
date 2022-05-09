@@ -130,16 +130,15 @@ function showRegistrationForm() {
 }
 
 function showcourseform() {
-	echo '
-		<form method = "post" action = "tutor.php">
-					<label for = "name">courseName</label>
-					<input type="text" name="name"/>
-					<br/><br/>
-					<label for = "creditvalue">creditvalue</label>
-					<input type="text" name = "creditvalue"/>
-					<br/><br/>
-					<input type="submit" value = "submit"/>
-				</form>';
+	echo '<form method = "post" action = "tutor.php">';
+	echo '<label for = "name">courseName</label>';
+	echo '<input type="text" name="name"/>';
+	echo '<br/><br/>';
+	echo '<label for = "creditvalue">creditvalue</label>';
+	echo '<input type="text" name = "creditvalue"/>';
+	echo '<br/><br/>';
+	echo '<input type="submit" value = "submit"/>';
+	echo '</form>';
 }
 
 function courseform($connect){
@@ -202,10 +201,7 @@ function tutorauthstudent($connect){
 		
 
 		while ($row = mysqli_fetch_array($result)) {
-			$schoolID = $row["schoolID"];
-			$firstName = $row["firstName"];
-			$lastName = $row["lastName"];
-
+			extract($row);
 			echo "<tr>";
 			echo "<td>$schoolID</td>";
 			echo "<td>$firstName</td>";
@@ -263,6 +259,55 @@ function studentcoursetable($connect){
 			"</table>";
 
 	}
+}
+
+function files($connect){
+	if(isset($_POST["courseidresorce"])){
+		$courseid = $_POST["courseidresorce"];
+		$file = $_FILE["fileSelect"];
+
+		$fileName = $file["name"];
+		$tmpName = $file["tmpname"];
+		$targetfile = "resources/$filename";
+
+		if (move_uploaded_file($tmpName, $targetfile)){
+			echo "<p> file has been uploaded</p>";
+		}
+		else{
+			echo "<p> there was an error </p>";
+		}
+
+	}
+	echo"
+	<form method='post' action = 'tutor.php' enctype= 'multipart/form-data'>";
+
+	echo"<label for = 'courseidresorce'>course</label>";
+	echo"<select name = 'courseidresorse'>";
+	$database = "SELECT * FROM courses";
+	$result = mysqli_query($connect, $database);
+
+	while ($row = mysqli_fetch_array($result)){
+		extract($row);
+
+		echo "<option value= '$courseid'> $name </option>";
+	}
+	echo"</select>";
+
+	echo '<br/><br/>';
+	echo '<br/><br/>';
+
+	echo "<label for='fileSelect'>Select file</label>";
+	echo"<input type='file' name = 'fileSelect'/>";
+
+	echo '<br/><br/>';
+	echo '<br/><br/>';
+
+	echo"<input type = 'submit' value = 'submit'/>";
+
+	echo "</form>";
+
+
+	
 }	
 
 	
